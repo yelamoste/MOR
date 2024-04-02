@@ -1,0 +1,209 @@
+* {
+ margin: 0;
+ padding: 0;
+}
+/* body {
+    background-color: burlywood; */
+/* } */
+ 
+
+
+/* for faculty main */
+
+
+.faculty-main-block {
+    background-color: aqua; 
+    height: 100%; 
+    width: 30%; 
+    text-align: center;
+
+}
+
+/* navigation bar */
+
+.navbar {
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    background-color: #ffff;
+    border-bottom: 1px solid #ced4da;
+    /* for visualization //temp */
+    /* background-color:  */
+    /* border-bottom: ; */
+}
+#navbar-cmpe-logo {
+   height: 30px;
+   width: 30px; 
+   margin-left: 60px;
+   /* for visualization // temp */
+
+}
+#navbar-header {
+    font-size: 15px;
+    font-family: 'InterExtraBold';
+    color: #DC8116;
+    margin-left: 10px;
+}
+a {
+    font-size: 14px;
+    font-family: 'InterLight';
+    text-decoration: none;
+    color: #2F2F2F;
+    }
+.navbar span{
+    width: 65%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+
+
+/* content container */
+
+.content {
+    height: 80vh;
+    width: 80vw;
+    background-color: beige;
+    left: 10vw;
+    top: 15vh;
+    display: block;
+    position: absolute;   
+}
+.title-header-content{
+    height: 45px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 3px solid #DC8116;
+
+    /* background-color: aqua; */
+}
+#return-button {
+    height: 27px;
+    width: 27px;
+}
+#title-header {
+    font-size: 20px;
+    font-family: 'InterBold';
+    margin-left: 10px;
+    /* margin-top: 5px; */
+}
+
+.research-info-container {
+    display: flex;
+    justify-content: space-between;
+}
+.research-details{
+    width: 53%;
+    
+}
+.research-brief-details {
+    display: flex;
+    /* background-color: brown; */
+    height: 100px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+p.research-brief-details {
+    padding: 5px;
+    margin: 5px;
+}
+.info-sub-title {
+    font-family: 'InterSemiBold';
+    font-size: 12px;
+
+}
+.details {
+    font-family: 'InterRegular';
+    font-size: 12px;
+    top: 5px;
+}
+
+.research-brief-details-members{
+    width: 37%;
+    margin: 10px;
+}
+.research-brief-details-sub-title{
+    width: 55%;
+    margin: 10px;
+}
+.update-info {
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: 0.5px solid #c1c1c1;
+}
+.update-info a {
+    font-family: 'InterLight';
+    font-size: 12px;
+    color: blue;
+    margin-bottom: 20px;
+}
+.research-preview {
+    width: 31%;
+    height: 70vh;
+    background-color: #2F2F2F;
+    background-image: url(../img/frontpage.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+    margin-right: 50px;
+}
+.research-proposes-cont {
+    font-family: 'InterSemiBold';
+    font-size: 12px;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* FONTS */
+
+@font-face {
+    font-family: 'InterRegular';
+    src: url(../css/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf);
+    src: url(../css/fonts/Inter/static/Inter-Regular.ttf);  
+} 
+@font-face {
+    font-family: 'InterThin';
+    src: url(../css/fonts/Inter/static/Inter-Thin.ttf);
+}
+@font-face {
+    font-family: 'InterMedium' ;
+    src: url(../css/fonts/Inter/static/Inter-Medium.ttf);
+}
+@font-face {
+    font-family: 'InterLight';
+    src: url(../css/fonts/Inter/static/Inter-Light.ttf);
+}
+@font-face {
+    font-family: 'InterExtraLight';
+    src: url(../css/fonts/Inter/static/Inter-ExtraLight.ttf);
+}
+@font-face {
+    font-family: 'InterExtraBold';
+    src: url(../css/fonts/Inter/static/Inter-ExtraBold.ttf);
+}
+@font-face {
+    font-family: 'InterBold';
+    src: url(../css/fonts/Inter/static/Inter-Bold.ttf);
+}
+@font-face {
+    font-family: 'InterSemiBold';
+    src: url(../css/fonts/Inter/static/Inter-SemiBold.ttf);
+}
