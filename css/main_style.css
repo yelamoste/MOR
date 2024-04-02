@@ -101,6 +101,8 @@ a {
 }
 .research-details{
     width: 53%;
+    display: flex;
+    flex-wrap: wrap;
     
 }
 .research-brief-details {
@@ -119,6 +121,7 @@ p.research-brief-details {
 .info-sub-title {
     font-family: 'InterSemiBold';
     font-size: 12px;
+    margin-right: 10px;
 
 }
 .details {
@@ -143,7 +146,7 @@ p.research-brief-details {
 .update-info a {
     font-family: 'InterLight';
     font-size: 12px;
-    color: blue;
+    color: #0D6EFD;
     margin-bottom: 20px;
 }
 .research-preview {
@@ -161,9 +164,45 @@ p.research-brief-details {
     font-family: 'InterSemiBold';
     font-size: 12px;
     margin: 10px;
+    margin-right: 0px;
 }
-
-
+.research-title-cont {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 3px solid #DC8116;
+    padding-left: 10px;
+    border-bottom: 0.5px solid #c1c1c1;
+    
+}
+.research-title-cont-cont   {
+    display: flex;
+    width: 100%;
+}
+.display-result-title {
+    margin: 10px;
+    margin-left: 0px;
+    margin-right: 20px;
+    padding: 3px;
+    color: #ffff;
+    font-family: 'InterBold';
+    font-size: 10px;
+}
+.research-result-cont {
+    display: flex;
+}
+#title-accepted {
+    background-color: #198754;
+}
+#title-rejected {
+    background-color: #DC3545;
+}
+button {
+    border: none;
+    margin: 10px;
+    color: #0D6EFD;
+}
 
 
 
