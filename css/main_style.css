@@ -236,6 +236,7 @@ button {
     font-family: "InterExtraBold";
     margin-right: 10px;
     width: 22vw;
+    margin-top: 2.5px;
 }
 .title-header-content #title-header-info  {
     font-size: 18px;
@@ -243,10 +244,73 @@ button {
 }
 .cont-cont {
     display: flex;
+    justify-content: space-between;
 } 
 .comment-recommendation-cont {
-    width: 52%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 60%;
 }
+#com-rec-p {
+    margin: 10px;
+    margin-left: 0px;
+}
+.comments-cont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 5px;
+}
+.comments-cont img{
+    height: 25px;
+    width: 25px;
+}
+.profile-name-comment {
+    font-size: 12px;
+    font-family: "InterSemiBold";
+    margin-left: 10px;
+}
+.comment-date{
+    font-size: 8px;
+    font-family: "InterLight";
+    color: var(--primary);
+    margin-left: 10px;
+}
+.comment-cont-info {
+    font-family: "InterRegular";
+    font-size: 12px;
+    margin-left: 35px;
+}
+.reply-button{
+    font-size: 11px;
+    color: var(--primary);
+    margin-left: 35px;
+    font-family: "InterLight";
+}
+textarea {
+    font-family: "InterRegular";
+    font-size: 10px;
+    width: 50%;
+    height: 50%;
+    margin-left: 10px;
+}
+.fulvuos-button{
+    color: white;
+    font-size: 10px;
+    background-color: var(--fulvous-primary);
+    border-radius: 2px;
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.approval-cont {
+    width: 40%;
+
+}
+
 
 
 /* MOR PAGE 12 */
