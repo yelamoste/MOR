@@ -412,6 +412,19 @@ textarea {
     display: flex;
 
 }
+.research-panelist-cont {
+    display: flex;
+    margin: 10px;
+    font-family: "InterRegular";
+    font-size: 12px;
+}
+input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.research-panelist {
+    width: 50%;
+}
 
 
 .content-cont .details-cont p {
