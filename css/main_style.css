@@ -174,15 +174,19 @@ p.research-brief-details {
     margin-bottom: 20px;
 }
 .research-preview {
-    width: 31%;
+    width: 35%;
     height: 70vh;
     background-color: #2F2F2F;
-    background-image: url(../img/frontpage.png);
+    /* background-image: url(../img/frontpage.png); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     margin: 10px;
     margin-right: 50px;
+}
+iframe {
+    height: 100%;
+    width:100%;
 }
 .research-proposes-cont {
     font-family: 'InterSemiBold';
