@@ -84,7 +84,8 @@ a {
     background-color: beige;
     left: 10vw;
     top: 15vh;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     position: absolute;   
 }
 .title-header-content{
@@ -101,6 +102,9 @@ a {
     height: 27px;
     width: 27px;
 }
+/* button {
+    border:none;
+} */
 #title-header {
     font-size: 20px;
     font-family: 'InterBold';
@@ -221,10 +225,11 @@ p.research-brief-details {
     padding-left: 5px;
     padding-right: 6px;
 }
-button {
+.view , .remove {
     border: none;
     margin: 10px;
     color: #0D6EFD;
+    cursor: pointer;
 }
 
 /* MOR PAGE 11 */
@@ -358,7 +363,7 @@ textarea {
 
 .main-cont {
     width: 80vw;
-    position: relative;
+    position: absolute;
     left: 0;
     right: 0;
     margin: auto;
@@ -495,8 +500,102 @@ input{
    
 }
 
+/* FACULTY */
+/* FACULTY 6.5 CSS */
 
+.elib-content {
+    width: 48%;
+    /* background-color: #0D6EFD; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex-direction: column;
+}
+.research-abstract-preview {
+    width: 48%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* overflow: hidden; */
+    /* background-color: #198754; */
+}
+#faculty-adviser-review-thesis {
+    justify-content: space-between;
+}
+#faculty-adviser-review-thesis-elib-cont {
+    border: none;
+}
+#elib-content-details{
+    padding: 10px;
+    text-align: justify;
+}
+.elib-subcont-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+#submit-elib {
+    background-color: var(--fulvous-primary);
+    color: var(--secondary);
+    padding: 3px;
+    cursor: pointer;
+    border: none;
+}
+.review-thesis-title {
+    font-family: "InterSemiBold";
+    font-size: 16px;
+    margin: 10px;
+    text-align: justify;
+}
+.review-thesis-citation {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 10px;
+    font-family: "InterLight";
+    font-size: 12px;
+}
+#thesis-author {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.citation-author {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#citation-author, #citation-date {
+    margin-left: 10px;
+}
+.citation-date {
+    display: flex;
+    align-items: center;
+}
+.thesis-abstract {
+    margin-top: 10px;
+    height: 70%;
+}
+p#thesis-abstract-title {
+    margin-left: 10px;
+}
+p.thesis-abstract {
+    margin-left: 10px;
+    overflow-y: scroll;
+    text-align: justify;
+    font-family: "InterRegular";
+    font-size: 12px;
+    height: 90%;
+}
 
+/* Success Page */
+.return-button {
+    border: none;
+    padding-right: 10px;
+}
 
 
 
