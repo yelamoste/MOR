@@ -267,7 +267,7 @@ p.research-brief-details {
 .comments-cont {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     margin: 5px;
 }
 .comments-cont img{
@@ -289,6 +289,10 @@ p.research-brief-details {
     font-family: "InterRegular";
     font-size: 12px;
     margin-left: 35px;
+}
+.reply-button, .fulvuos-button {
+    border: none;
+    cursor: pointer;
 }
 .reply-button{
     font-size: 11px;
@@ -406,9 +410,9 @@ textarea {
 
 .content-cont hr {
     background-color: var(--fulvous-primary);
-    height: 5px;
+    height: 2px;
     border: none;
-    border-radius: 5px;
+    border-radius: 2px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -510,13 +514,14 @@ input{
     flex-wrap: wrap;
     align-items: stretch;
     flex-direction: column;
+    
 }
 .research-abstract-preview {
     width: 48%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* overflow: hidden; */
+    overflow: hidden;
     /* background-color: #198754; */
 }
 #faculty-adviser-review-thesis {
@@ -535,6 +540,9 @@ input{
     justify-content: space-between;
     align-items: flex-start;
     padding: 20px;
+}
+.authors-cont, .other-info-cont{
+    width: 45%;
 }
 #submit-elib {
     background-color: var(--fulvous-primary);
@@ -566,11 +574,15 @@ input{
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
 }
 #citation-author, #citation-date {
     margin-left: 10px;
+    width: 90%;
+    text-align: justify;
 }
+
 .citation-date {
     display: flex;
     align-items: center;
@@ -590,11 +602,36 @@ p.thesis-abstract {
     font-size: 12px;
     height: 90%;
 }
+::-webkit-scrollbar {
+    width: 5px;
+    height: 10%;
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background: var(--fulvous-primary);
+    border-radius: 12%;
+    
+}
+
 
 /* Success Page */
 .return-button {
     border: none;
-    padding-right: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.info-success{
+    font-family: "InterSemiBold";
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+.back-button {
+    border: none;
+    background-color: var(--fulvous-primary);
+    color: var(--secondary);
+    font-family: "InterRegular";
+    font-size: 12px;
+    padding: 5px 20px 5px 20px;
 }
 
 
@@ -605,7 +642,8 @@ p.thesis-abstract {
 
 /* VIEWPORT */
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 768px ) {
 
 /* Navbar */
 .navbar {
@@ -653,21 +691,25 @@ a {
 }
 .research-abstract-preview {
     width: 100%;
-    border: 0.025px solid grey;
+    border: 0.025px solid var(--gray-400);
     padding-bottom: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 p.thesis-abstract{
     overflow-y: hidden;
     margin-right: 10px;
     margin-bottom: 10px;
+    font-size: 13px;
 }
 #submit-elib {
     position: absolute;
     width: 100%;
     bottom: 0;
-    margin-bottom: 4px;
+    margin-bottom: 12px;
 
+}
+.details{
+    font-size: 13px;
 }
 }
 

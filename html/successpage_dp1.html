@@ -11,9 +11,7 @@
 
 <body>
 
-    <!-- <button onclick="ElibSuccessSubmission()">Submit</button>
-    <button onclick="DP1SuccessSubmission()">Submit1</button>
-    <button onclick="DP2SuccessSubmission()">Submit2</button> -->
+    <!-- <button onclick="DP1SuccessSubmission()">Submit1</button> // This one is for the submit button in dp1-->
 
     <section class="main-cont">
         <div class="success-page-cont" id="success-page-dp1">
@@ -25,7 +23,7 @@
                 <h2>Successful!</h2>
                 <hr>    
                 <p class="info-success">Your Research Paper have been successfully submitted.</p>
-                <button onclick="history.back()">Back</button>
+                <button onclick="history.back()" class="back-button">Back</button>
             </div>
             
         </div>
@@ -34,23 +32,15 @@
 </body>
 </html>
 <!-- 
-<script>
-    let Elib = document.getElementById("success-page-elib");
-    let DP1 = document.getElementById("success-page-dp1");
-    let DP2 = document.getElementById("success-page-dp2");
 
-    function ElibSuccessSubmission() {
-            Elib.style.display = "block";    
-console.log(1);
-    }
+//script for html file connected to this success page.
+
+<script>
     function DP1SuccessSubmission() {
-            DP1.style.display = "block";    
-console.log(2);
-    }
+        window.location.href = "successpage_dp1.html";
+
+console.log(success_ka_bebe_dp1);
     
-    function DP2SuccessSubmission() {
-            DP2.style.display = "block";    
-console.log(3);
     }
-    
 </script> -->
+
