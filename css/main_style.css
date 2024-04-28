@@ -306,7 +306,7 @@ iframe {
     margin-left: 35px;
     font-family: "InterLight";
 }
-textarea {
+.comment-textarea textarea {
     font-family: "InterRegular";
     font-size: 10px;
     width: 50%;
@@ -403,9 +403,9 @@ textarea {
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: #00000026 0px 8px 16px 0px;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 35px;
     height: 70vh;
 }
 
@@ -425,6 +425,7 @@ textarea {
 
 .content-cont .details-cont {
     display: flex;
+    justify-content: space-between;
 
 }
 .research-panelist-cont {
@@ -433,7 +434,7 @@ textarea {
     font-family: "InterRegular";
     font-size: 12px;
 }
-input{
+input[type="radio"] {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -442,9 +443,9 @@ input{
 }
 
 
-.content-cont .details-cont p {
+label.group-members-cont , .content-cont .details-cont p {
     font-family: InterSemiBold;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .content-cont .details-cont p span {
@@ -459,7 +460,7 @@ input{
 
 .content-cont .details-cont .details-panelist-cont,
 .details-submission-cont {
-    width: 50%;
+    width: 47%;
 }
 
 .details-submission-cont textarea {
@@ -468,13 +469,16 @@ input{
     margin-bottom: 15px;
     outline: none;
     font-family: 'InterRegular';
-    font-size: 16px;
-    border-radius: 5px;
+    font-size: 12px;
+    border-radius: 2px;
     border: solid var(--gray-400) 2px;
     color: #212529;
     padding: 5px;
     width: calc(100% - 14px);
-    height: 100px;
+    height: 20%;
+}
+textarea.details-submission-cont {
+    font-family: "InterSemiBold";
 }
 
 .details-submission-cont .details-action-cont {
@@ -705,6 +709,38 @@ p.thesis-abstract {
     cursor: pointer;
 }
 
+/* MOR 6 */
+
+input[type="text"], select#research-adviser-sel, select#course-sel, select#yns-sel, select#group-sel{
+    width: calc(100% - 10px);
+    height: 20px;
+    margin-bottom: 5px;
+    border: 0.5px solid var(--gray-400);
+    font-family: "InterLight";
+    color: var(--primary);
+    padding: 2px 5px 2px 5px;
+    outline: none;
+
+}
+input[type="text"]:focus, select#research-adviser-sel:focus, select#course-sel:focus, select#yns-sel:focus, select#group-sel:focus {
+    color: black;
+    font-family: "InterRegular";
+    outline: 0.5px solid var(--fulvous-primary);
+}
+p.group-members-cont {
+    margin-bottom: 15px;
+
+}
+select#research-adviser-sel, select#course-sel, select#yns-sel, select#group-sel{
+    margin-top: 10px;
+    height: 25px;
+    width: 100%;
+}
+
+.other-details-cont-sel {
+    display: flex;
+    justify-content: space-between;
+}
 
 
 
