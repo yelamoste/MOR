@@ -1,3 +1,10 @@
+/* CSS connected to following html file:
+student_MOR_5.html , student_MOR_6.html , student_MOR_10.html , student_MOR_11.html , student_MOR_12.html ,
+6.5Faculty-AdviserREview.html , sucesspage_dp1.html , sucesspage_dp2.html , sucesspage_Elib.html
+
+*/
+
+
 * {
  margin: 0;
  padding: 0;
@@ -14,17 +21,6 @@ body {
     background-color: #F8F8FF;
 }
 
-
-/* for faculty main */
-
-
-.faculty-main-block {
-    background-color: aqua; 
-    height: 100%; 
-    width: 30%; 
-    text-align: center;
-
-}
 
 /* navigation bar */
 
@@ -83,7 +79,6 @@ a {
 .content {
     height: 80vh;
     width: 80vw;
-    background-color: beige;
     left: 10vw;
     top: 15vh;
     display: flex;
@@ -177,18 +172,17 @@ p.research-brief-details {
 }
 .research-preview {
     width: 35%;
-    height: 70vh;
+    height: 100%;
     background-color: #2F2F2F;
-    /* background-image: url(../img/frontpage.png); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 10px;
-    margin-right: 50px;
+    margin-right: 25px;
 }
-iframe {
+embed {
     height: 100%;
     width:100%;
+    border: none;
 }
 .research-proposes-cont {
     font-family: 'InterSemiBold';
@@ -205,6 +199,9 @@ iframe {
     padding-left: 10px;
     border-bottom: 0.5px solid #c1c1c1;
     
+}
+.research-title-cont:hover {
+    background-color: #c1c1c163;
 }
 .research-title-cont-cont   {
     display: flex;
@@ -236,6 +233,28 @@ iframe {
     margin: 10px;
     color: #0D6EFD;
     cursor: pointer;
+    background-color: transparent;
+}
+.upload-file {
+    z-index: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--fulvous-primary);
+    cursor: pointer;
+    background-image: url(../img/icons8-upload-button-50.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.upload-file:hover {
+    background-color: var(--fulvous-primary);
+    background-image: url(../img/hover.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* MOR PAGE 11 */
@@ -407,6 +426,9 @@ iframe {
     padding-right: 50px;
     padding-top: 35px;
     height: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .content-cont h2 {
@@ -426,6 +448,7 @@ iframe {
 .content-cont .details-cont {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 
 }
 .research-panelist-cont {
@@ -483,8 +506,9 @@ textarea.details-submission-cont {
 
 .details-submission-cont .details-action-cont {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 40px;
+    margin-top: 35px;
 }
 
 .details-submission-cont .details-action-cont .details-action-clear {
@@ -532,7 +556,7 @@ textarea.details-submission-cont {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    /* background-color: #198754; */
+    
 }
 #faculty-adviser-review-thesis {
     justify-content: space-between;
@@ -710,8 +734,12 @@ p.thesis-abstract {
 }
 
 /* MOR 6 */
+#mor-6-submission-cont .details-submission-cont {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-input[type="text"], select#research-adviser-sel, select#course-sel, select#yns-sel, select#group-sel{
+.group-members, select#research-adviser-sel, select#course-sel, select#yns-sel, select#group-sel{
     width: calc(100% - 10px);
     height: 20px;
     margin-bottom: 5px;
@@ -722,7 +750,7 @@ input[type="text"], select#research-adviser-sel, select#course-sel, select#yns-s
     outline: none;
 
 }
-input[type="text"]:focus, select#research-adviser-sel:focus, select#course-sel:focus, select#yns-sel:focus, select#group-sel:focus {
+.group-members:focus, select#research-adviser-sel:focus, select#course-sel:focus, select#yns-sel:focus, select#group-sel:focus, #mor-6-submission-cont textarea:focus {
     color: black;
     font-family: "InterRegular";
     outline: 0.5px solid var(--fulvous-primary);
@@ -740,6 +768,52 @@ select#research-adviser-sel, select#course-sel, select#yns-sel, select#group-sel
 .other-details-cont-sel {
     display: flex;
     justify-content: space-between;
+}
+#mor-6-submission-cont textarea {
+    height: 20px;
+    border: 0.5px solid var(--gray-400);
+    margin: 0;
+    text-wrap: wrap;
+}
+#mor-6-submission-cont p{
+    margin-bottom: 15px;
+}
+.drag-file-upload {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 0.5px solid var(--fulvous-primary);
+    border-radius: 5px;
+    height: 20%;
+    width: calc(100% 10px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+#drag-file-upload-logo {
+    height: 50px;
+    width: 50px;
+}
+input[type="file"]::file-selector-button {
+    border: 0.5px dashed var(--fulvous-primary);
+    
+    
+}
+/* .drag-file-upload-inputfile {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+} */
+form {
+    height: 80%;
+    display: flex;
 }
 
 

@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <button onclick="MORSuccessSubmission()">Submit</button>
+        <button onclick="DP1SuccessSubmission()">Submit1</button>
+        <button onclick="DP2SuccessSubmission()">Submit2</button>
+        
+        <div class="cont" id="MorSubmission">
+            <p> MOR Success!</p>
+        </div>   
+        <div class="cont" id="DP1Submission">
+            <p> DP1 Success!</p>
+        </div> 
+        <div class="cont" id="DP2Submission">
+            <p> DP2 Success!</p>
+        </div> 
+    </body>
+</html>
+<script>
+    let MOR = document.getElementById("MorSubmission");
+    let DP1 = document.getElementById("DP1Submission");
+    let DP2 = document.getElementById("DP2Submission");
+
+    function MORSuccessSubmission() {
+            MOR.style.display = "block";
+            DP1.style.display = "none";
+            DP2.style.display = "none";    
+console.log(1);
+    }
+    function DP1SuccessSubmission() {
+            MOR.style.display = "none";
+            DP1.style.display = "block";
+            DP2.style.display = "none";    
+console.log(2);
+    }
+    
+    function DP2SuccessSubmission() {
+            MOR.style.display = "none";
+            DP1.style.display = "none";
+            DP2.style.display = "block";    
+console.log(3);
+    }
+</script>

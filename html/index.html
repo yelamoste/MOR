@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="../css/main_style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/log.css">
+    <link rel="icon" type="image/x-icon" href="../img/book-half.png">
+    
+    <!-- <link rel="preconnect" href="../html/successpage.html"> -->
+
+</head>
+
+
+<body>
+    
+    <div class="container-block">
+        <!-- image placeholder -->
+        <div class="cont-cont-block" id="img-block">
+
+        </div>
+        <!-- form -->
+        <div class="cont-cont-block" id="form-block">
+            <div class="cont-cont-form-block" id="option-block">
+                <div class="title-block">
+                    <img src="../img/cmpe_logo.jpg">
+                    <p class="form-title-block">Computer Engineering Research Library</p>
+                    <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
+                </div>
+                <div class="option-buttons">
+                    <button onclick="StudentResearcher()">Student Researcher</button>
+                    <button onclick="Faculty()">Faculty</button>
+                    <button onclick="Admin()">Admin</button>
+                </div>
+            </div>
+
+            <!-- div directory for buttons -->
+
+            <!-- SIGN IN -->
+            
+            <!-- student-researchers -->
+            <div class="sign-cont" id="signin-sr-cont">
+                <div class="title-block">
+                    <img src="../img/cmpe_logo.jpg">
+                    <p class="form-title-block">Student Researcher</p>
+                    <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
+                </div>
+                <div class="login-form">
+                    <input class="input-form" type="text" id="signin_student_id" placeholder="Student number" required/>
+                    <input class="input-form" type="password" id="signin_student_pass" placeholder="Password" required/>
+                    <button onclick="StudentSubmit()" class="submit-button">Submit</button>
+                    <button onclick="StudentSignUp()" class="sign-button">Sign Up Here</button>
+                </div>
+            </div>
+            <!-- Faculty -->
+            <div class="sign-cont" id="signin-faculty-cont">
+                <div class="title-block">
+                    <img src="../img/cmpe_logo.jpg">
+                    <p class="form-title-block">Faculty</p>
+                    <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
+                </div>
+                <div class="login-form">
+                    <input class="input-form" type="email" id="signin_faculty_webmail" placeholder="PUP webmail" required/>
+                    <input class="input-form" type="password" id="signin_faculty_pass" placeholder="Password" required/>
+                    <button onclick="" class="submit-button">Submit</button>
+                    <button onclick="FacultySignUp()" class="sign-button">Sign Up Here</button>
+                </div>
+            </div>
+            <!-- Admin -->
+            <div class="sign-cont" id="signin-admin-cont">
+                <div class="title-block">
+                    <img src="../img/cmpe_logo.jpg">
+                    <p class="form-title-block">Administrator</p>
+                    <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
+                </div>
+                <div class="login-form">
+                    <input class="input-form" type="email" id="signin_admin_webmail" placeholder="PUP webmail" required/>
+                    <input class="input-form" type="password" id="signin_admin_pass" placeholder="Password" required/>
+                    <button onclick="" class="submit-button">Submit</button>
+                    <button onclick="AdminSignUp()" class="sign-button">Sign Up Here</button>
+                </div>
+            </div>
+
+            <!-- SIGN UP -->
+
+            <!-- student-researchers -->
+            <div class="sign-cont" id="signup-sr-cont">
+                <div class="title-block">
+                    <img src="../img/cmpe_logo.jpg">
+                    <p class="form-title-block">Student Researcher</p>
+                    <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
+                </div>
+                <div class="login-form">
+                    <input class="input-form" type="text" id="signup_student_id" placeholder="Student number" required/>
+                    <input class="input-form" type="email" id="student_webmail" placeholder="PUP webmail" required/>
+                    <input class="input-form" type="password" id="signup_student_pass" placeholder="Password" required/>
+                    <button onclick="" class="submit-button">Submit</button>
+                    <button onclick="StudentSignIn()" class="sign-button" >Sign In Here</button>
+                </div>
+            </div>
+            <!-- Faculty -->
+            <div class="sign-cont" id="signup-faculty-cont">
+                <div class="title-block">
+                    <img src="../img/cmpe_logo.jpg">
+                    <p class="form-title-block">Faculty</p>
+                    <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
+                </div>
+                <div class="login-form">
+                    <input class="input-form" type="email" id="signup_faculty_webmail" placeholder="PUP webmail" required/>
+                    <input class="input-form" type="password" id="signup_faculty_pass" placeholder="Password" required/>
+                    <button onclick="" class="submit-button">Submit</button>
+                    <button onclick="FacultySignIn()" class="sign-button">Sign In Here</button>
+                </div>
+            </div>
+            <!-- Admin -->
+            <div class="sign-cont" id="signup-admin-cont">
+                <div class="title-block">
+                    <img src="../img/cmpe_logo.jpg">
+                    <p class="form-title-block">Administrator</p>
+                    <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
+                </div>
+                <div class="login-form">
+                    <input class="input-form" type="email" id="signup_admin_webmail" placeholder="PUP webmail" required/>
+                    <input class="input-form" type="password" id="signup_admin_pass" placeholder="Password" required/>
+                    <button onclick="" class="submit-button">Submit</button>
+                    <button onclick="AdminSignIn()" class="sign-button">Sign In Here</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    
+
+let sistudent = document.getElementById('signin-sr-cont');
+let sifaculty = document.getElementById('signin-faculty-cont');
+let siadmin = document.getElementById('signin-admin-cont');
+let sustudent = document.getElementById('signup-sr-cont');
+let sufaculty = document.getElementById('signup-faculty-cont');
+let suadmin = document.getElementById('signup-admin-cont');
+let option = document.getElementById('option-block');
+
+
+function StudentResearcher(){
+    sistudent.style.display = "block";    
+    option.style.display = "none";
+}
+function Faculty(){
+    sifaculty.style.display = "block";    
+    option.style.display = "none";
+}
+function Admin(){
+    siadmin.style.display = "block";    
+    option.style.display = "none";
+}
+
+function StudentSignIn(){
+    sistudent.style.display = "block";    
+    sustudent.style.display = "none";
+}
+function FacultySignIn(){
+    sifaculty.style.display = "block";    
+    sufaculty.style.display = "none";
+}
+
+function AdminSignIn(){
+    siadmin.style.display = "block";    
+    suadmin.style.display = "none";
+}
+
+function StudentSignUp(){
+    sustudent.style.display = "block";    
+    sistudent.style.display = "none";
+}
+function FacultySignUp(){
+    sufaculty.style.display = "block";    
+    sifaculty.style.display = "none";
+}
+
+function AdminSignUp(){
+    suadmin.style.display = "block";    
+    siadmin.style.display = "none";
+}
+function StudentSubmit(){
+    window.location.href = 'student_MOR_4.html';
+}
+</script>

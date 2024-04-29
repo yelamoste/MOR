@@ -1,0 +1,209 @@
+:root {
+    --primary: #667080;
+    --secondary: #EEF1F4;
+    --gray-400: #CED4DA;
+    --fulvous-primary: #DC8116;
+    --celtic-blue: #1671DC;
+    --jet: #2F2F2F;
+}
+
+.container-block{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    
+
+}
+#img-block {
+    width: 70vw;
+    background-color: var(--primary);
+}
+#form-block  {
+    width: 30vw;
+    
+}
+.cont-cont-form-block, .sign-cont {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.sign-cont {
+    display: none;
+}
+.title-block{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.title-block img{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-bottom: 10px;
+}
+.form-title-block {
+    font-size: 20px;
+    font-family: "InterSemiBold";
+}
+.title-block span{
+    font-size: 12px;
+    font-family: "InterRegular";
+
+}
+
+.option-buttons, .login-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    height: 25%;
+    width: 100%;
+}
+.option-buttons button, .submit-button{
+    width: 83%;
+    height: 30px;
+    color: white;
+    background-color: var(--fulvous-primary);
+    border: none;
+    border-radius: 2px;
+    padding: 2px 5px 2px 5px;
+    font-family: "InterMedium";
+    cursor: pointer;
+}
+.input-form {
+    width: 80%;
+    height: 20px;
+    margin-bottom: 5px;
+    border: 0.5px solid var(--gray-400);
+    font-family: "InterLight";
+    color: var(--primary);
+    padding: 2px 5px 2px 5px;
+    outline: none;
+}
+.login-form input:focus {
+    color: black;
+    font-family: "InterRegular";
+    outline: 0.5px solid var(--fulvous-primary);
+}
+.sign-button{
+    border: none;
+    color: var(--celtic-blue);
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "InterRegular";
+    text-align: right;
+    width: 20%;
+    align-self: flex-end;
+}
+
+/* STUDENT MOR 4 */
+
+.cont-cont-block-page {
+    width: 100vw;
+    height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.title-cont-block {
+    display: flex;
+    width: 100%;
+    height: 30%;
+    flex-direction: column;
+    align-items: center;
+}
+.title-cont-block p{
+    font-size: 30px;
+    font-family: "InterBold";
+    color: var(--jet);
+}
+.title-cont-block span{
+    font-size: 14px;
+    font-family: "InterRegular";
+    color: var(--jet);
+}
+.courses-cont {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.course-cont-cont {
+    height: 100%;
+    width: 25%;
+    border: 0.5px solid var(--gray-400);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.course-cont-cont img{
+    height: 55%;
+    width: 100%;
+}
+.subject-course {
+    font-size: 16px;
+    font-family: "InterBold";
+    padding: 7px 0 0 7px;
+    color: var(--jet);
+}
+.subject-code {
+    font-size: 12px;
+    font-family: "InterRegular";
+    padding: 0 7px 0 7px;
+    color: var(--celtic-blue);
+}
+.proceed-button {
+    width: 30%;
+    align-self: end;
+    padding: 7px;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--fulvous-primary);
+    margin: 10px 7px 0 0;
+    color: white;
+    font-family: "InterMedium";
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* MOR PAGE 9 */
+.committee-option {
+    width: 47%;
+    height: 20px ;
+    padding: 2px 0 2px 0;
+    margin: 0 0 2px 0;
+    font-size: 12px;
+    font-family: "InterRegular";
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+.committees-cont {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-top: 15px;
+}
+.committee-option label{
+    padding-left: 10px;
+}

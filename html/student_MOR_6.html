@@ -18,16 +18,16 @@
         <div class="content-cont">
             <h2>Student Researcher Information</h2>
             <hr>
-            <form action="">
+            <form action="research-info-form" id="info-form">
                 <div class="details-cont">
                     <div class="details-submission-cont" id="form-input-cont"> 
                         <div class="group-members-cont">
                             <p class="group-members-cont">Group Members:<span>*</span></p>
-                            <input type="text" name="group-members-cont" value="" placeholder="example: Jane Q. Doe" autocomplete="off" required/>
-                            <input type="text" name="group-members-cont" value="" placeholder="Member 2" autocomplete="off" required/>
-                            <input type="text" name="group-members-cont" value="" placeholder="Member 3" autocomplete="off" required/>
-                            <input type="text" name="group-members-cont" value="" placeholder="Member 4" autocomplete="off" required/>
-                            <input type="text" name="group-members-cont" value="" placeholder="Member 5" autocomplete="off" required/>
+                            <input class="group-members" type="text" name="group-members-cont" value="" placeholder="example: Jane Q. Doe" autocomplete="off" required/>
+                            <input class="group-members" type="text" name="group-members-cont" value="" placeholder="Member 2" autocomplete="off" required/>
+                            <input class="group-members" type="text" name="group-members-cont" value="" placeholder="Member 3" autocomplete="off" required/>
+                            <input class="group-members" type="text" name="group-members-cont" value="" placeholder="Member 4" autocomplete="off" required/>
+                            <input class="group-members" type="text" name="group-members-cont" value="" placeholder="Member 5" autocomplete="off" required/>
                         </div>
                         <div class="other-details-cont">
                             <div class="other-details-cont-cont" id="research-adviser-sel-cont"> 
@@ -97,16 +97,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="details-submission-cont">
-                        <p>Provide the title of your research below. <span>*</span></p>
+                    <div class="details-submission-cont" id="mor-6-submission-cont">
+                        <p>Provide the title/s of your research below. <span>*</span></p>
+                        <textarea></textarea>
+                        <textarea></textarea>
                         <textarea></textarea>
                         <p>Upload the files below. <span>*</span></p>
-                        <p class="description">Upload the chapter 1 to 3 of your thesis for Title Defense</p>
-                        <input type="file" accept=".pdf" required>
+                        
+                        
+                            
+                        <label for="mor-1-3-file-upload"  class="drag-file-upload" id="drag-file-upload">
+                                <img src="../img/drag.svg" id="drag-file-upload-logo"/>
+                                <span class="description">Upload the chapter 1 to 3 of your thesis for Title Defense</span>
+                        
+                            <input onchange="Output()" name="drag-file-upload" type="file" class="drag-file-upload-inputfile" id="mor-1-3-file-upload" accept=".pdf" hidden required />
+                        </label>
+                        <p id="demo"></p>
 
-                        <div class="details-action-cont">
-                            <button class="details-action-clear">Clear</button>
-                            <button class="details-action-submit">Submit</button>
+
+                        <div class="details-action-cont" id="mor-6-action-cont">
+                            <button class="details-action-clear" onclick="ClearButton()">Clear</button>
+                            <button class="details-action-submit" onclick="">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -116,3 +127,122 @@
 </body>
 
 </html>
+<script>
+
+function ClearButton(){
+  document.getElementById("info-form").reset();
+}
+
+    function Output(){
+
+var fileInput = document.getElementById('mor-1-3-file-upload').files[0].name;
+
+console.log(1);
+console.log(fileInput);
+
+document.getElementById("demo").innerHTML = fileInput;
+    }
+</script>
+<!-- 
+<script>
+
+let dragFile = document.getElementById("drag-file-upload");
+
+;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dragFile.addEventListener(eventName, preventDefaults, false)   
+    document.body.addEventListener(eventName, preventDefaults, false)
+})
+
+// Highlight drop area when item is dragged over it
+;['dragenter', 'dragover'].forEach(eventName => {
+  dragFile.addEventListener(eventName, highlight, false)
+})
+
+;['dragleave', 'drop'].forEach(eventName => {
+  dragFile.addEventListener(eventName, unhighlight, false)
+})
+
+// Handle dropped files
+dragFile.addEventListener('drop', handleDrop, false)
+
+function preventDefaults (e) {
+  e.preventDefault()
+  e.stopPropagation()
+}
+
+
+function highlight(e) {
+  dragFile.classList.add('highlight')
+}
+
+function unhighlight(e) {
+  dragFile.classList.remove('active')
+}
+
+function handleDrop(e) {
+  var dt = e.dataTransfer
+  var files = dt.files
+
+  handleFiles(files)
+}
+
+let uploadProgress = []
+let progressBar = document.getElementById('demo')
+
+function initializeProgress(numFiles) {
+  progressBar.value = 0
+  uploadProgress = []
+
+  for(let i = numFiles; i > 0; i--) {
+    uploadProgress.push(0)
+  }
+}
+
+function updateProgress(fileNumber, percent) {
+  uploadProgress[fileNumber] = percent
+  let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
+  progressBar.value = total
+}
+
+function handleFiles(files) {
+  files = [...files]
+  initializeProgress(files.length)
+  files.forEach(uploadFile)
+  files.forEach(previewFile)
+}
+function previewFile(file) {
+  let reader = new FileReader()
+  reader.readAsDataURL(file)
+  reader.onloadend = function() {
+    let img = document.createElement('img')
+    img.src = reader.result
+    document.getElementById('gallery').appendChild(img)
+  }
+}
+
+function uploadFile(file, i) {
+  var url = 'https://api.cloudinary.com/v1_1/joezimim007/image/upload'
+  var xhr = new XMLHttpRequest()
+  var formData = new FormData()
+  xhr.open('POST', url, true)
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+
+  // Update progress (can be used to show progress indicator)
+  xhr.upload.addEventListener("progress", function(e) {
+    updateProgress(i, (e.loaded * 100.0 / e.total) || 100)
+  })
+
+  xhr.addEventListener('readystatechange', function(e) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      updateProgress(i, 100) // <- Add this
+    }
+    else if (xhr.readyState == 4 && xhr.status != 200) {
+      // Error. Inform the user
+    }
+  })
+
+  formData.append('upload_preset', 'ujpu6gyk')
+  formData.append('file', file)
+  xhr.send(formData)
+}
+</script> -->
