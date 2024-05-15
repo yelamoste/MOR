@@ -1,0 +1,1 @@
+SELECT group_members.id FROM group_members LEFT JOIN thesis_basic_info ON thesis_basic_info.group_members;
