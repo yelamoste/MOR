@@ -3,14 +3,8 @@
     session_start();
 
 
-    /*if (isset( $_SESSION['student-signed-in']) && isset($_SESSION['student-id']) && isset($_SESSION['student-name'])){
-        echo "is signed in: ".$_SESSION['student-signed-in'];
-        echo "id: ".$_SESSION['student-id'];
-        echo "name: ".$_SESSION['student-name'];
-    } */
-    
 
-    
+
     if (isset($_SESSION['student-id'])){ // check if student is logged in
 
         header("location: ../html/student_MOR_4.php"); // redirect 

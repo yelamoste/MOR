@@ -1,6 +1,9 @@
 <?php
 require('../php/db_conn.php');
 
+
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['student_signin'])) {
         $sischool_id = $_POST['signin_student_id'];
@@ -15,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($count == 1) {
             session_start();
             
-            // $_SESSION['student-signed-in'] = true;
             $_SESSION['student-id'] = $row['id'];
             $_SESSION['student-name'] = $row['student_name'];
            

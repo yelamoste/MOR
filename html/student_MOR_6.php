@@ -1,7 +1,9 @@
 <?php
 include("../php/db_conn.php");
 include("../php/form.php");
-session_start();
+
+include('../php/session_student.php');
+
 
 ?>
 

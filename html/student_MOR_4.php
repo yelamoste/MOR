@@ -1,9 +1,7 @@
 <?php
 include('../php/db_conn.php');
-include('../php/log.php');
-session_start();
+include('../php/session_student.php');
 
-echo "<script> alert('Login Success'); </script>";
 ?>
 
 <!DOCTYPE html>

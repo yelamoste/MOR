@@ -1,10 +1,9 @@
 <?php
 include('../php/db_conn.php');
-include('../php/display.php');
-include('../php/log.php');
-
 
 include('../php/session_student.php');
+include('../php/display.php');
+
 
 
 
