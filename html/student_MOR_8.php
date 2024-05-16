@@ -1,11 +1,9 @@
 <?php
 include('../php/db_conn.php');
 // // include('../php/log.php');
-include('../php/session.php');
+include('../php/session_student.php');
 // include('../php/display.php');
-session_start();
 
-CheckLogin("student");
 
 
 if (!isset($_SESSION['view-research-title-id'])) {

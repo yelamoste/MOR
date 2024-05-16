@@ -1,6 +1,6 @@
 <?php
 include('../php/db_conn.php');
-session_start();
+
 if (isset($_SESSION['student-id'])) {
     $id = $_SESSION['student-id'];
 
@@ -32,7 +32,11 @@ if (isset($_SESSION['student-id'])) {
          INNER JOIN title_proposals as t ON tb.title_proposal_id = t.id
          WHERE user_id = $id";
     $result5 = $db_conn->query($sql5);
+
+
 }
+
+
 
 
 // if (isset($_SESSION['u_id'])) {

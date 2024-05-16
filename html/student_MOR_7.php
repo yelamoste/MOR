@@ -4,8 +4,7 @@ include('../php/display.php');
 include('../php/log.php');
 
 
-include('../php/session.php'); //required for CheckLogin()
-CheckLogin("student"); // verify if user is logged in   parameters = student | faculty | admin
+include('../php/session_student.php');
 
 
 
