@@ -24,6 +24,19 @@ include('../php/log.php');
         <span><a href="#"> Homepage</a></span>
         <div class="profile">
             <img src="../img/person-circle.png" id="navbar-profile" />
+            <div class="profile" onclick="profileDropDown()">
+                <img src="../img/person-circle.png" id="navbar-profile" />
+                <div class="profile-dropdown-cont" id="profile-dropdown-cont">
+                    <div class="profile-dropdown" id="profile-dropdown">
+                        <div class="profile-name">
+                            <p>Welcome, <?php echo $_SESSION['student-name']; ?>
+                        </div>
+                        <div class="log-out">
+                            <p id="log-out"><a href="../php/logout.php">Log out</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="content">
@@ -133,7 +146,7 @@ include('../php/log.php');
                             <div class="research-title-cont" onclick="PdfPreview('<?php echo $pdfPath; ?>')">
                                 <div class="research-title-cont-cont">
                                     <p class="info-sub-title" id="title-label">Title:</p>
-                                    <p class="details" id="research-title">F
+                                    <p class="details" id="research-title">
                                         <?php echo $title; ?>
                                     </p>
                                 </div>
@@ -178,7 +191,7 @@ include('../php/log.php');
 </body>
 
 </html>
-<script>
+<script src="../javascript/navbar.js">
     function PdfPreview(pdfPath) {
         document.getElementById('embed-pdf').src = pdfPath + "#toolbar=0";
     }
