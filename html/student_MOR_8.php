@@ -1,10 +1,34 @@
 <?php
 include('../php/db_conn.php');
-include('../php/log.php');
+// // include('../php/log.php');
 include('../php/session.php');
-include('../php/display.php');
+// include('../php/display.php');
+session_start();
+
+CheckLogin("student");
 
 
+if (!isset($_SESSION['view-research-title-id'])) {
+    header("location: ../html/student_MOR_7.php");
+}
+$id = $_SESSION['student-id'];
+
+$uid = $_SESSION['view-research-title-id'];
+$sql6 = "SELECT tb.id,  tb.title_proposal_id, t.title, t.filename, t.status
+          FROM thesis_basic_info as tb
+          INNER JOIN title_proposals as t ON tb.title_proposal_id = t.id
+          WHERE user_id = $id AND title_proposal_id =$uid ";
+
+$result6 = $db_conn->query($sql6);
+
+$rows = 0;
+if ($result6->num_rows > 0) {
+    while ($row = $result6->fetch_assoc()) {
+        $rows++;
+        $title = $row['title'];
+        $filename = $row['filename'];
+    }
+}
 
 ?>
 
@@ -49,13 +73,9 @@ include('../php/display.php');
             <p id="title-header-proposal">Proposal Research Title: </p>
             <p id="title-header-info">
                 <?php
-                if ($result6->num_rows > 0) {
-                    while ($row = $result6->fetch_assoc()) {
-                    
-                        echo $row['title'];
-                        
-                        
-                    }}
+                for ($i = 0; $i < $rows; $i++) {
+                    echo $title;
+                }
                 ?>
             </p>
         </div>
@@ -97,16 +117,12 @@ include('../php/display.php');
 
             </div>
             <div class="preview-cont">
+
                 <?php
-                if ($result6->num_rows > 0) {
-                    while ($row = $result6->fetch_assoc()) {
-                        $pdfPath = "../pdf/" . $filename;
 
-
-                        echo "<embed src='$pdfPath'#toolbar=0' id='embed-pdf'></embed>";
-                    }
-                } else {
-                    echo "No results found.";
+                for ($i = 0; $i < $rows; $i++) {
+                    $pdfPath = "../pdf/" . $filename;
+                    echo "<embed src='$pdfPath'#toolbar=0' id='embed-pdf'></embed>";
                 }
 
                 ?>
@@ -119,5 +135,5 @@ include('../php/display.php');
 </html>
 
 <script src="../javascript/navbar.js">
-    
+
 </script>

@@ -35,18 +35,21 @@ if (isset($_SESSION['student-id'])) {
 }
 
 
-if (isset($_SESSION['u_id'])) {
-    $uid = $_SESSION['u_id'];
+// if (isset($_SESSION['u_id'])) {
+//     $uid = $_SESSION['u_id'];
 
 
-    $sql6 = "SELECT tb.id,  tb.title_proposal_id, t.title, t.filename, t.status
-         FROM thesis_basic_info as tb
-         INNER JOIN title_proposals as t ON tb.title_proposal_id = t.id
-         WHERE user_id = $id AND id = $uid ";
-        $result6 = $db_conn->query($sql6);
+//     $sql6 = "SELECT tb.id,  tb.title_proposal_id, t.title, t.filename, t.status
+//          FROM thesis_basic_info as tb
+//          INNER JOIN title_proposals as t ON tb.title_proposal_id = t.id
+//          WHERE user_id = $id AND id = $uid ";
+//         $result6 = $db_conn->query($sql6);
 
-    echo($result6);
-}
+//     echo($result6);
+// }
+
+
+
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {

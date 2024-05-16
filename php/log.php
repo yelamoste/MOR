@@ -15,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($count == 1) {
             session_start();
             
-            $_SESSION['student-signed-in'] = true;
+            // $_SESSION['student-signed-in'] = true;
             $_SESSION['student-id'] = $row['id'];
             $_SESSION['student-name'] = $row['student_name'];
-            
+           
 
             header("location: ../html/student_MOR_4.php");
         } else {

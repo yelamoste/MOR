@@ -4,6 +4,17 @@ include('../php/display.php');
 include('../php/log.php');
 
 
+include('../php/session.php'); //required for CheckLogin()
+CheckLogin("student"); // verify if user is logged in   parameters = student | faculty | admin
+
+
+
+if (isset($_POST["view-research-title"])) {
+    $_SESSION['view-research-title-id'] = $_POST["view-research-title"];
+    header("location: ../html/student_MOR_8.php ");
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -141,7 +152,8 @@ include('../php/log.php');
                             $filename = $row['filename'];
                             $status = $row['status'];
                             $pdfPath = "../pdf/" . $filename;
-
+                            $proposal_id = $row['title_proposal_id'];
+                            
                     ?>
                             <div class="research-title-cont" onclick="PdfPreview('<?php echo $pdfPath; ?>')">
                                 <div class="research-title-cont-cont">
@@ -159,12 +171,19 @@ include('../php/log.php');
                                         $col = ($status == "Approved") ? "#198754" : (($status == "Conditional") ? "#DC8116" : (($status == "Rejected") ? "#DC3545" : "#817b7b"));
                                         echo '<p class="display-result-title" id="response-cont" style="background-color:' . $col . '">'
                                             . $status;
-                                        '</p>'
+                                        '</p>';
                                         ?>
 
                                     </div>
-                                    <!-- connect this to student_MOR_8, and user ID, and whatever you clicked, that is the only data -->
-                                    <button class="view" type="button" name="view-research-title" id="view-research-title" onclick="window.location.href = '../html/student_MOR_8.php';">View</button>
+
+                                    <form action="" method="POST">
+                                        <?php
+                                        
+                                        //connect this to student_MOR_8, and user ID, and whatever you clicked, that is the only data
+                                        echo  " <button class='view' type='submit' value='$proposal_id' name='view-research-title' id='view-research-title' >View</button>";
+                                        ?>
+                                    </form>
+
                                     <button class="remove" type="button" id="remove-research-title">Remove</button>
                                 </div>
                             </div>
