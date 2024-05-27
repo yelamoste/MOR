@@ -8,3 +8,13 @@ function profileDropDown() {
     }
     console.log(1);
 }
+let zoomd = document.getElementById('zoom-dir');
+
+// for student_MOR_8 pdfzoom
+function PopUp() {
+
+    zoomd.style.display = "block";
+}
+function PopUpExit(){
+    zoomd.style.display = "none";
+}

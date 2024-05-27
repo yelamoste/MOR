@@ -62,7 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         header("Location: ../html/student_MOR_8.php");
     }
+    
+
 }
+
+
 
 
 // $sql4 = "SELECT  FROM group_members  LIMIT 1";

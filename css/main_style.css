@@ -22,54 +22,6 @@ body {
 }
 
 
-/* navigation bar */
-
-.navbar {
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-
-    background-color: #ffff;
-    border-bottom: 1px solid var(--gray-400);
-    /* for visualization //temp */
-    /* background-color:  */
-    /* border-bottom: ; */
-}
-#navbar-cmpe-logo {
-   height: 30px;
-   width: 30px; 
-   margin-left: 60px;
-   /* for visualization // temp */
-
-}
-#navbar-header {
-    font-size: 15px;
-    font-family: 'InterExtraBold';
-    color: var(--fulvous-primary);
-    margin-left: 10px;
-}
-a {
-    font-size: 14px;
-    font-family: 'InterLight';
-    text-decoration: none;
-    color: #2F2F2F;
-    }
-.navbar span{
-    width: 70%;
-    text-align: right;
-    margin-right: 10px;
-}
-.navbar .profile {
-    margin-left: 2%;
-}
-.navbar .profile img {
-    height: 30px;
-    width: 30px;
-}
 
 
 /* MOR PAGE 10 */
@@ -187,6 +139,39 @@ embed {
     height: 100%;
     width:100%;
     border: none;
+    z-index: 0;
+}
+.zoom-button{
+    height: 30px;
+    width: 30px;
+    background-image: url(../img/icons8-zoom-in-50.png);
+    background-size: cover;
+    z-index: 1;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+.zoom-dir{
+    width: 80vw;
+    height: 80vh;
+    z-index: 2;
+    position: absolute;
+    display: none;
+    border: 1px solid var(--gray-400);
+}
+.zoom-dir-exit{
+    height: 30px;
+    width: 30px;
+    background-image: url(../img/icons8-exit-button-50.png);
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 0.5px solid var(--gray-400);
 }
 .research-proposes-cont {
     font-family: 'InterSemiBold';
@@ -234,6 +219,9 @@ embed {
     color: #ffff;
     font-family: 'InterBold';
     font-size: 10px;
+}
+#response-cont2{
+    width: 10%;
 }
 .research-result-cont {
     display: flex;
@@ -303,16 +291,22 @@ embed {
     font-size: 14px;
     font-family: "InterExtraBold";
     margin-right: 10px;
-    width: 18vw;
     margin-top: 2.5px;
+    width: 17%;
 }
-.title-header-content #title-header-info  {
+.title-header-content, p#title-header-info  {
+    margin-top: 2.5px;
     font-size: 14px;
     font-family: "InterBold";
+}
+#title-header-info {
+    width: 73%;
 }
 .cont-cont {
     display: flex;
     justify-content: space-between;
+    height: 72vh;
+    width: 80vw;
 } 
 .comment-recommendation-cont {
     display: flex;
@@ -329,6 +323,9 @@ embed {
     flex-wrap: wrap;
     align-items: flex-start;
     margin: 5px;
+    align-items: center;
+    height: fit-content;
+    width: calc(100% - 5px);
 }
 .comments-cont img{
     height: 25px;
@@ -338,17 +335,21 @@ embed {
     font-size: 12px;
     font-family: "InterSemiBold";
     margin-left: 10px;
+    width: 50%;
 }
 .comment-date{
     font-size: 8px;
     font-family: "InterLight";
     color: var(--primary);
     margin-left: 10px;
+    width: 20%;
 }
 .comment-cont-info {
     font-family: "InterRegular";
     font-size: 12px;
     margin-left: 35px;
+    width: 100%;
+    height: max-content;
 }
 .reply-button, .fulvuos-button {
     border: none;
@@ -360,12 +361,21 @@ embed {
     margin-left: 35px;
     font-family: "InterLight";
 }
-.comment-textarea textarea {
+.comment-textarea {
     font-family: "InterRegular";
     font-size: 10px;
-    width: 50%;
-    height: 50%;
     margin-left: 10px;
+    resize: none;  
+    height: 100%;
+    width: 85%;
+}
+.comment-textarea-sect{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.comment-sect{
+    height: 68%;
 }
 .fulvuos-button{
     color: white;
@@ -376,11 +386,17 @@ embed {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
-
+    margin-left: 10px;
+}
+p.response-ind{
+    font-size: 12px;
+    font-style: italic;
+    font-family: 'InterSemiBold';
 }
 .preview-cont {
     width: 40%;
-    
+    display: flex;
+    flex-wrap: wrap;   
 }
 #approval-responses-title {
     margin: 10px;
@@ -390,6 +406,11 @@ embed {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+}
+.buttons-view-proceed{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
 }
 .cat-title {
     display: flex;
@@ -542,8 +563,7 @@ textarea.details-submission-cont {
 .details-submission-cont .details-action-cont {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 40px;
-    margin-top: 35px;
+
 }
 
 .details-submission-cont .details-action-cont .details-action-clear {
@@ -859,35 +879,6 @@ input[type="file"]::file-selector-button {
 
 
 @media screen and (max-width: 768px ) {
-
-/* Navbar */
-.navbar {
-    width: 100%;
-    height: 7vh;
-}
-#navbar-cmpe-logo {
-    height: 20px;
-    width: 20px;
-    margin-left: 20px;
-}
-#navbar-header{
-    font-size: 12px;
-    width: 40%;
-}
-.navbar span{
-    width: 38%;
-    margin-right: 10px;
-}
-a {
-    font-size: 12px;
-}
-.navbar .profile{
-    width: 7%;
-}
-.navbar .profile img{
-    height: 25px;
-    width: 25px;
-}
 
 
 /* Elibrary 6.5 */

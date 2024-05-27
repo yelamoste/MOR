@@ -26,19 +26,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         for ($i = 1; $i <= 5; $i++) {
             $member_name = $_POST['group-members-cont' . $i];
             if (!empty($member_name)) {
-                
+
                 $group_members[] = $member_name;
             }
         }
         foreach ($group_members as $member_name) {
-            
-            
 
-            $sql0 = "INSERT INTO group_members (user_id, name, group_number, course, yearnsection) VALUES ('$student_id','$member_name','$group_no','$course','$yns')";
-            if ($db_conn->query($sql0) !== TRUE) {
-                echo "Error: " . $sql0 . "<br>" . $db_conn->error;
-            }
-        } 
+
+
+            // $sql0 = "INSERT INTO group_members (user_id, name, group_number, course, yearnsection) VALUES (`$student_id` , `$member_name` , `$group_no` , `$course` , `$yns`)";
+            // if ($db_conn->query($sql0) !== TRUE) {
+            //     echo "Error: " . $sql0 . "<br>" . $db_conn->error;
+            // }
+            $stmt1 = $db_conn->prepare("INSERT INTO group_members (user_id, name, group_number, course, yearnsection) VALUES (?, ?, ?, ?, ?)");
+            $stmt1->bind_param("isiss", $student_id, $member_name, $group_no, $course, $yns);
+            $stmt1->execute();
+            $stmt1->close();
+        }
 
 
 
@@ -77,16 +81,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             $defaultValue = "Processing";
 
-            $sql4 = "INSERT INTO title_proposals (title, filename, folder_path, time_stamp, status) VALUES ('$escapedTitles','$filename','$folder_path','$time_stamp','$defaultValue')";
-            if ($db_conn->query($sql4) !== TRUE) {
-                echo "Error" . $sql4 . "<br>" . $db_conn->error;
-            }
-
+            // $sql4 = "INSERT INTO title_proposals (title, filename, folder_path, time_stamp, status) VALUES ('$escapedTitles','$filename','$folder_path','$time_stamp','$defaultValue')";
+            // if ($db_conn->query($sql4) !== TRUE) {
+            //     echo "Error" . $sql4 . "<br>" . $db_conn->error;
+            // }
+            $stmt2 = $db_conn->prepare("INSERT INTO title_proposals (title, filename, folder_path, time_stamp, status) VALUES (?, ?, ?, ?, ?)");
+            $stmt2->bind_param("sssss", $escapedTitles, $filename, $folder_path, $time_stamp, $defaultValue);
+            $stmt2->execute();
+            $stmt2->close();
 
 
             // TABLE thesis_basic_info
             $research_adv = $_POST['research-adviser-sel'];
-                        $sql5 = "INSERT INTO thesis_basic_info (user_id, group_members, research_adviser, title_proposal_id)
+            $sql5 = "INSERT INTO thesis_basic_info (user_id, group_members, research_adviser, title_proposal_id)
                      VALUES (
                         '$student_id',
                         (SELECT DISTINCT group_number FROM  group_members WHERE group_number = '$group_no' and yearnsection = '$yns' and course = '$course' ORDER BY group_number LIMIT 1),
@@ -103,8 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } else {
                 echo "Error: " . $sql5 . "<br>" . $db_conn->error;
             }
-
-
         }
 
 

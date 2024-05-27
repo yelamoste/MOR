@@ -21,6 +21,7 @@ if (isset($_POST["view-research-title"])) {
     <title> Student MOR </title>
     <!-- temporary title for now, supposed changes as per title proposals -->
     <link rel="stylesheet" href="../css/main_style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="icon" type="image/x-icon" href="../img/book-half.png">
 </head>
 
@@ -31,22 +32,20 @@ if (isset($_POST["view-research-title"])) {
         <p id="navbar-header">CpEng Research Library</p>
 
         <span><a href="#"> Homepage</a></span>
-        <div class="profile">
+        <div class="profile" onclick="profileDropDown()">
             <img src="../img/person-circle.png" id="navbar-profile" />
-            <div class="profile" onclick="profileDropDown()">
-                <img src="../img/person-circle.png" id="navbar-profile" />
-                <div class="profile-dropdown-cont" id="profile-dropdown-cont">
-                    <div class="profile-dropdown" id="profile-dropdown">
-                        <div class="profile-name">
-                            <p>Welcome, <?php echo $_SESSION['student-name']; ?>
-                        </div>
-                        <div class="log-out">
-                            <p id="log-out"><a href="../php/logout.php">Log out</a></p>
-                        </div>
+            <div class="profile-dropdown-cont" id="profile-dropdown-cont">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="profile-name">
+                        <p>Welcome, <?php echo $_SESSION['student-name']; ?>
+                    </div>
+                    <div class="log-out">
+                        <p id="log-out"><a href="../php/logout.php">Log out</a></p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="content">
         <!-- bg color of content for visualization of the size of the box -->
@@ -151,40 +150,42 @@ if (isset($_POST["view-research-title"])) {
                             $status = $row['status'];
                             $pdfPath = "../pdf/" . $filename;
                             $proposal_id = $row['title_proposal_id'];
-                            
+
                     ?>
-                            <div class="research-title-cont" onclick="PdfPreview('<?php echo $pdfPath; ?>')">
-                                <div class="research-title-cont-cont">
-                                    <p class="info-sub-title" id="title-label">Title:</p>
-                                    <p class="details" id="research-title">
-                                        <?php echo $title; ?>
-                                    </p>
-                                </div>
-                                <div class="research-result-cont">
-                                    <div class="display-result">
-
-                                        <?php
-
-
-                                        $col = ($status == "Approved") ? "#198754" : (($status == "Conditional") ? "#DC8116" : (($status == "Rejected") ? "#DC3545" : "#817b7b"));
-                                        echo '<p class="display-result-title" id="response-cont" style="background-color:' . $col . '">'
-                                            . $status;
-                                        '</p>';
-                                        ?>
-
+                            <form action="" method="POST">
+                                <div class="research-title-cont" onclick="PdfPreview('<?php echo $pdfPath; ?>')">
+                                    <div class="research-title-cont-cont">
+                                        <p class="info-sub-title" id="title-label">Title:</p>
+                                        <p class="details" id="research-title">
+                                            <?php echo $title; ?>
+                                        </p>
                                     </div>
+                                    <div class="research-result-cont">
+                                        <div class="display-result">
 
-                                    <form action="" method="POST">
+                                            <?php
+
+
+                                            $col = ($status == "Approved") ? "#198754" : (($status == "Conditional") ? "#DC8116" : (($status == "Rejected") ? "#DC3545" : "#817b7b"));
+                                            echo '<p class="display-result-title" id="response-cont" style="background-color:' . $col . '">'
+                                                . $status;
+                                            '</p>';
+                                            ?>
+
+                                        </div>
+
+
                                         <?php
-                                        
+
                                         //connect this to student_MOR_8, and user ID, and whatever you clicked, that is the only data
                                         echo  " <button class='view' type='submit' value='$proposal_id' name='view-research-title' id='view-research-title' >View</button>";
                                         ?>
-                                    </form>
 
-                                    <button class="remove" type="button" id="remove-research-title">Remove</button>
+
+                                        <button class="remove" type="button" id="remove-research-title">Remove</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                     <?php
                         }
                     } else {

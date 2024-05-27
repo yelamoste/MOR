@@ -14,6 +14,7 @@ include('../php/session_student.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/main_style.css">
     <link rel="stylesheet" href="../css/log.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="icon" type="image/x-icon" href="../img/book-half.png">
     <!-- <link rel="preconnect" href="../html/successpage.html"> -->
 </head>

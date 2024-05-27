@@ -9,23 +9,34 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $sischool_id = $_POST['signin_student_id'];
         $sipassword = $_POST['signin_student_pass'];
 
-        $usersql = "SELECT * FROM student_users WHERE  school_id = '$sischool_id' and password = '$sipassword'";
+        // $usersql = "SELECT * FROM student_users WHERE  school_id = '$sischool_id' and password = '$sipassword'";
 
-        $result = mysqli_query($db_conn, $usersql);
+        // $result = mysqli_query($db_conn, $usersql);
+        // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        // $count = mysqli_num_rows($result);
+
+        $stmt0 = $db_conn->prepare("SELECT * FROM  student_users WHERE school_id = ? and password = ?");
+        $stmt0->bind_param("ss", $sischool_id, $sipassword);
+        $stmt0->execute();
+        $result = $stmt0->get_result();
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $count = mysqli_num_rows($result);
 
+        // while ($row = $result->fetch_assoc()) {
+        //     echo $row['name'];
+        // }
         if ($count == 1) {
             session_start();
-            
+
             $_SESSION['student-id'] = $row['id'];
             $_SESSION['student-name'] = $row['student_name'];
-           
+
 
             header("location: ../html/student_MOR_4.php");
         } else {
             echo "<script> alert('Login Failed'); </script>";
         }
+        $stmt0->close();
     }
 
     if (isset($_POST['student_signup'])) {

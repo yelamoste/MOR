@@ -3,7 +3,10 @@ include('../php/db_conn.php');
 include('../php/session_student.php');
 
 
-
+if (isset($_POST["committee-proceed-button"])) {
+    $_SESSION['committee-proceed-button'] = $_POST["committee-proceed-button"];
+    header("location: ../html/student_MOR_9.php ");
+}
 if (!isset($_SESSION['view-research-title-id'])) {
     header("location: ../html/student_MOR_7.php");
 }
@@ -23,6 +26,7 @@ if ($result6->num_rows > 0) {
         $rows++;
         $title = $row['title'];
         $filename = $row['filename'];
+        $status = $row['status'];
     }
 }
 
@@ -36,6 +40,7 @@ if ($result6->num_rows > 0) {
     <!-- temporary title for now, supposed changes as per title proposals -->
     <link rel="stylesheet" href="../css/main_style.css">
     <link rel="stylesheet" href="../css/log.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="icon" type="image/x-icon" href="../img/book-half.png">
 </head>
 
@@ -74,43 +79,49 @@ if ($result6->num_rows > 0) {
                 }
                 ?>
             </p>
+            <?php
+
+
+            $col = ($status == "Approved") ? "#198754" : (($status == "Conditional") ? "#DC8116" : (($status == "Rejected") ? "#DC3545" : "#817b7b"));
+            echo '<p class="display-result-title" id="response-cont2" style="background-color:' . $col . '">'
+                . $status;
+            '</p>';
+            ?>
         </div>
         <div class="cont-cont">
             <div class="comment-recommendation-cont">
                 <p class="info-sub-title" id="com-rec-p">Comment/Recommendation</p>
                 <!-- data from db should be displayed here. -->
+                <div class="comment-sect">
+                    <div class="comments-cont" id="comment-1">
+                        <img src="../img/avatar-placeholder _- Change image here.png" />
+                        <?php
+                        echo "<p class='profile-name-comment'>Prof." . "</p>";
+                        echo "<p class='comment-date'>" . "</p>";
+                        echo "<p class='comment-cont-info'>" . "</p>";
+                        echo "<button onclick='' class='reply-button'>Reply here</button>";
+                        ?>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    <div class="comment-textarea-sect">
+                        <div class="comments-cont" id="comment-textarea">
+                            <img src="../img/avatar-placeholder _- Change image here.png" />
+                            <textarea placeholder="Autosize height based on content lines" class="comment-textarea"></textarea>
+                            <button onclick="" class="fulvuos-button" id="add-button">Add</button>
+                        </div>
 
-                <div class="comments-cont" id="comment-1">
-                    <img src="../img/avatar-placeholder _- Change image here.png" />
-                    <p class="profile-name-comment">Prof. Juan Dela Cruz Dimagiba</p>
-                    <p class="comment-date">1 day ago</p>
-                    <p class="comment-cont-info">Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <button onclick="" class="reply-button">Reply here</button>
-                </div>
-                <div class="comments-cont" id="comment-2">
-                    <img src="../img/avatar-placeholder _- Change image here.png" />
-                    <p class="profile-name-comment">Prof. Juan Dela Cruz Dimagiba</p>
-                    <p class="comment-date">1 day ago</p>
-                    <p class="comment-cont-info">Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <button onclick="" class="reply-button">Reply here</button>
-                </div>
-                <div class="comments-cont" id="comment-3">
-                    <img src="../img/avatar-placeholder _- Change image here.png" />
-                    <p class="profile-name-comment">Prof. Juan Dela Cruz Dimagiba</p>
-                    <p class="comment-date">1 day ago</p>
-                    <p class="comment-cont-info">Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <button onclick="" class="reply-button">Reply here</button>
-                </div>
-                <div class="comments-cont" id="comment-textarea">
-                    <img src="../img/avatar-placeholder _- Change image here.png" />
-                    <textarea placeholder="Autosize height based on content lines" class="comment-textarea"></textarea>
-                    <button onclick="" class="fulvuos-button" id="add-button">Add</button>
-                </div>
-                <div class="buttons-view-proceed">
-                    <button onclick="" class="fulvuos-button" id="view-button">View the paper</button>
-                    <button onclick="" class="fulvuos-button " id="proceed-button">Proceed to Title Defense</button>
-                </div>
-
+                        <?php
+                        if ($status == "Approved" or $status == "Conditional") {
+                            echo "<div class='buttons-view-proceed'> <button class='fulvuos-button' id='committee-proceed-button' name='committee-proceed-button'>Proceed to Step 2</button> </div>";
+                        } elseif ($status == "Processing") {
+                            echo "<div class='buttons-view-proceed'><p class='response-ind' style='color:#DC8116;'> Please wait for the Research Adviser's response..</div>";
+                        } else {
+                            echo "<div class='buttons-view-proceed'><p class='response-ind' style='color:#DC3545;'> Please upload another title proposal. </p></div> ";
+                        }
+                        ?>
+                    </div>
+                </form>
             </div>
             <div class="preview-cont">
 
@@ -118,12 +129,20 @@ if ($result6->num_rows > 0) {
 
                 for ($i = 0; $i < $rows; $i++) {
                     $pdfPath = "../pdf/" . $filename;
-                    echo "<embed src='$pdfPath'#toolbar=0' id='embed-pdf'></embed>";
+                    echo "<embed src='$pdfPath#toolbar=0' id='embed-pdf'></embed>";
                 }
 
                 ?>
             </div>
         </div>
+        <?php
+        echo "<div class='zoom-button' id='zoom-button' name='zoom-button' onclick='PopUp()'></div>";
+        echo "<div class='zoom-dir' id='zoom-dir' name='zoom-dir'>
+            <div class='zoom-dir-exit' id='zoom-dir-exit' name='zoom-dir-exit' onclick='PopUpExit()'></div>
+            <embed src='$pdfPath#toolbar=0' id='embed-pdf'></embed>
+            </div>";
+
+        ?>
     </div>
 
 </body>

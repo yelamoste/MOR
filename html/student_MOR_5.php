@@ -4,6 +4,8 @@ include('../php/session_student.php');
 
 
 ?>
+
+<script src="../javascript/navbar.js"></script>
 <!DOCTYPE html>
 <html>
 
@@ -13,6 +15,7 @@ include('../php/session_student.php');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/main_style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="icon" type="image/x-icon" href="../img/book-half.png">
     <!-- <link rel="preconnect" href="../html/successpage.html"> -->
 </head>
@@ -47,7 +50,7 @@ include('../php/session_student.php');
                 <div class="directory-cont" id="research-committee-cont">
                     <p class="directory-cont-title">For Title Proposal - Research Committee</p>
                     <div class="button-cont">
-                        <button onclick="window.location.href = 'student_MOR_9.html';" class="continue-button">Continue</button>
+                        <button onclick="window.location.href = 'student_MOR_9.php';" class="continue-button">Continue</button>
                     </div>
                 </div>
                 
