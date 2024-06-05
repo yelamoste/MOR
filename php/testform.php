@@ -1,3 +1,38 @@
+<?php
+include('../php/db_conn.php');
+
+// Fetch thesis and related data
+$sql7 = "SELECT tb.id, tb.title_proposal_id, t.title, t.filename, t.status, tb.research_adviser, f.id AS faculty_id, f.faculty_name
+          FROM thesis_basic_info AS tb
+          JOIN title_proposals AS t ON tb.title_proposal_id = t.id
+          JOIN faculty_users AS f ON tb.research_adviser = f.id";
+
+$result7 = $db_conn->query($sql7);
+
+$rows = 0;
+$uid = '';
+$title = '';
+$filename = '';
+$status = '';
+$researchadv = '';
+
+if ($result7->num_rows > 0) {
+    while ($row = $result7->fetch_assoc()) {
+        $rows++;
+        
+        $title = $row['title'];
+        $filename = $row['filename'];
+        $status = $row['status'];
+        $researchadv = $row['faculty_name'];
+    }
+}
+
+// Fetch all faculty members
+$sql8 = "SELECT * FROM faculty_users";
+$result8 = $db_conn->query($sql8);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,47 +41,61 @@
     <title>PDF Upload Form</title>
 </head>
 <body>
-    <form method="post" >
-        <!-- <button name="subaru-submit">Submit</button> -->
+    <form method="post">
+        <?php
+        if ($result8->num_rows > 0) {
+            while ($row = $result8->fetch_assoc()) {
+                $id = $row['id'];
+                $faculty_name = $row['faculty_name'];
+
+                // Disabling the research adviser as a committee member
+                $isDisabled = ($faculty_name == $researchadv) ? 'disabled' : '';
+                echo $title;
+
+                echo '<div class="committee-option">
+                      <input type="checkbox" name="committeesel[]" value="' . $id . '" class="committee-checkbox" id="committee' . $id . '" ' . $isDisabled . '>
+                      <label for="committee' . $id . '">' . $faculty_name . '</label></div>';
+            }
+        } else {
+            echo "No faculty available";
+        }
+        ?>
+
+        <button class="details-action-submit" name="committee-submit">Submit</button>
     </form>
 </body>
 </html>
 
-
 <?php
-include('../php/db_conn.php');
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST["committee-submit"])) {
+        $thesis_id_result = $db_conn->query("SELECT id FROM thesis_basic_info LIMIT 1");
+        if ($thesis_id_result && $thesis_id_result->num_rows > 0) {
+            $thesis_row = $thesis_id_result->fetch_assoc();
+            $thesis_id = $thesis_row['id'];
+        } else {
+            die("Could not retrieve thesis id");
+        }
 
+        // Prepare the insert statement
+        $sql = $db_conn->prepare("INSERT INTO committees (committee, thesis) VALUES (?, ?)");
+        if (!$sql) {
+            die("Prepare failed: " . $db_conn->error);
+        }
 
-$group_members = array();
-$course = $_POST['course-sel'];
-$yns = $_POST['yns-sel'];
+        // Loop through selected checkboxes and insert them into the database
+        foreach ($_POST['committeesel'] as $selectedCommittee) {
+            $sql->bind_param("ii", $selectedCommittee, $thesis_id);
+            if (!$sql->execute()) {
+                echo "Error: " . $sql->error;
+            }
+        }
 
+        $sql->close();
+        $db_conn->close();
 
-
-for ($i = 1; $i <= 5; $i++) {
-    $member_name = $_POST['group-members-cont' . $i];
-    for ($j = 0; $j <2; $j++) {
-        $group_ID = $j;
-    }
-
-    if (!empty($member_name)) {
-        
-        
-        $group_members[] = $member_name;
+        // Redirect to a confirmation page or the form page
+        // header("Location: index.php");
     }
 }
-
-
-
-foreach ($group_members as $member_name) {
-    $group_no = $_POST['group-sel'];
-    
-
-    $sql0 = "INSERT INTO group_members (group_ID, name, group_number, course, yearnsection) VALUES ('$group_ID','$member_name','$group_no','$course','$yns')";
-    if ($db_conn->query($sql0) !== TRUE) {
-        echo "Error: " . $sql0 . "<br>" . $db_conn->error;
-    }
-    exit;
-    $group_ID++;
-}
-    ?>
+?>

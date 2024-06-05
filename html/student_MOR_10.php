@@ -4,15 +4,26 @@ include('../php/db_conn.php');
 include('../php/session_student.php');
 include('../php/title_proposal_display1.php');
 
+$id = $_SESSION['student-id'];
 
+// if (!isset($_SESSION['committeesel'])) {
+//     header("location: ../html/student_MOR_9.php");
+//   }
+if (isset($_POST["view-research-title2"])) {
+    $_SESSION['view-research-title-id2'] = $_POST["view-research-title2"];
+    header("location: ../html/student_MOR_11.php ");
 
+    // echo $_SESSION['view-research-title-id2'];
+  }
+  
 
-if (isset($_POST["view-research-title"])) {
-    $_SESSION['view-research-title-id'] = $_POST["view-research-title"];
-    header("location: ../html/student_MOR_8.php ");
-}
-
-
+  $sql10 = "SELECT tb.id, tb.title_proposal_id, tp.id, tp.title, tp.filename, tp2.response
+  FROM title_proposals_2 tp2
+  INNER JOIN thesis_basic_info AS tb ON tp2.thesis = tb.id
+  INNER JOIN title_proposals AS tp ON tb.title_proposal_id = tp.id ";
+  
+  $result10 = $db_conn->query($sql10);
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +62,7 @@ if (isset($_POST["view-research-title"])) {
         <!-- bg color of content for visualization of the size of the box -->
         <div class="title-header-content">
             <button onclick="window.location.href='../html/student_MOR_5.php';" class="return-button"><img src="../img/icon-back.png" id="return-button" /></button>
-            <p id="title-header"> Title Proposal - Research Adviser </p>
+            <p id="title-header"> Title Proposal - Research Committee </p>
         </div>
 
         <div class="research-info-container">
@@ -78,8 +89,8 @@ if (isset($_POST["view-research-title"])) {
 
                                     $result1 = $stmt1->get_result();
                                     $row2 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
-                                    $temp =  implode(';',$row2);
-                                    $temp2 = explode(';',$temp);
+                                    $temp =  implode('',$row2);
+                                    $temp2 = explode(',',$temp);
                                     echo implode('<br>',$temp2);
 
 
@@ -157,11 +168,11 @@ if (isset($_POST["view-research-title"])) {
 
                     <?php
                     // connected to title_proposal_display1.php
-                    if ($result5->num_rows > 0) {
-                        while ($row = $result5->fetch_assoc()) {
+                    if ($result10->num_rows > 0) {
+                        while ($row = $result10->fetch_assoc()) {
                             $title = $row['title'];
                             $filename = $row['filename'];
-                            $status = $row['status'];
+                            $response = $row['response'];
                             $pdfPath = "../pdf/" . $filename;
                             $proposal_id = $row['title_proposal_id'];
 
@@ -180,9 +191,9 @@ if (isset($_POST["view-research-title"])) {
                                             <?php
 
 
-                                            $col = ($status == "Approved") ? "#198754" : (($status == "Conditional") ? "#DC8116" : (($status == "Rejected") ? "#DC3545" : "#817b7b"));
+                                            $col = ($response == "Approved") ? "#198754" : (($response == "Conditional") ? "#DC8116" : (($response == "Rejected") ? "#DC3545" : "#817b7b"));
                                             echo '<p class="display-result-title" id="response-cont" style="background-color:' . $col . '">'
-                                                . $status;
+                                                . $response;
                                             '</p>';
                                             ?>
 
@@ -192,7 +203,7 @@ if (isset($_POST["view-research-title"])) {
                                         <?php
 
                                         //connect this to student_MOR_8, and user ID, and whatever you clicked, that is the only data
-                                        echo  " <button class='view' type='submit' value='$proposal_id' name='view-research-title' id='view-research-title' >View</button>";
+                                        echo  " <button class='view' type='submit' value=' $proposal_id' name='view-research-title2' id='view-research-title2' >View</button>";
                                         ?>
 
 
@@ -214,8 +225,6 @@ if (isset($_POST["view-research-title"])) {
                 <embed src="../pdf/Title-Proposal-Template.pdf#toolbar=0" id="embed-pdf"></embed>
             </div>
 
-            <div class="upload-file" onclick="window.location.href='student_MOR_6.php';">
-            </div>
         </div>
     </div>
 

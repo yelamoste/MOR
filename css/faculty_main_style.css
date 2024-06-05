@@ -1,0 +1,188 @@
+.cont-cont-block-page{
+    padding-top: 2%;
+}
+.cont-cont-block-main {
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+}
+.theses-cont{
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+.title-cont-cont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%
+}
+.title-cont-cont h1{
+    width: calc(100% - 10px);
+    height: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: "InterBold";
+    font-size: 30px;
+    padding: 5px;
+}
+.search-field{
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.search-input-field{
+    width: 85%;
+    height: 30px;
+    border: 1px solid #979491;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 12px;
+    font-family: "InterLight";
+}
+.search-button{
+    background-color: var(--fulvous-primary);
+    color: white;
+    padding: 0 10px 0 10px;
+    width: 14%;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "InterRegular";
+    font-size: 11px;
+}
+.thesis-block-cont{
+    display: flex;
+    height: calc(100% - 45px);
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+.title-block-cont{
+    font-family: "InterSemiBold";
+    font-size: 12px;
+    padding: 5px;
+}
+.sorting-sect{
+    display: flex;
+    width: 100%;
+    height: 8%;
+}
+.thesis-block-cont-cont{
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    /* overflow: scroll; */
+    width: 100%;
+}
+.thesis-cont{
+    display: flex;
+    height: 79%;
+    width: 100%;
+    align-content: center;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    margin: 10px 0 10px 0;
+    overflow-y: scroll;
+}
+.search-input{
+    font-family: "InterMedium";
+    font-size: 11px;
+    padding: 0 0 5px 5px;
+}
+.no-results-txt{
+    font-family: "InterRegular";
+    font-size: 12px;
+    text-align: center;
+    width: 100%
+}
+.text-directory{
+    border: none;
+    cursor: pointer;
+    color: #064fd9;
+    width: 50%;
+    height: 100%;
+    text-align: left;
+    font-family: 'InterRegular';
+    font-size: 11px;
+    padding: 5px;
+}
+.thesis-cont-cont{
+    width: calc(100% - 10px);
+    height: 30%;
+    border-left: 5px solid var(--fulvous-primary);
+    padding: 5px;
+    margin: 10px 0 10px 0;
+    border-bottom: 1px solid var(--gray-400);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+.thesis-title{
+    font-family: "InterSemiBold";
+    font-size: 12px;
+    height: calc(50%- 0px);
+    width: 100%;
+    padding: 5px;
+}
+.view-button{
+    border: none;
+    background-color: var(--fulvous-primary);
+    color: white;
+    font-family: "InterMedium";
+    font-size: 10px;
+    padding: 0 30px 0 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 100%;
+}
+.sec-dir{
+    width: 100%;
+    height: 20%;
+    display: flex;
+
+}
+.button-div{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 20px;
+    width: 50%;
+}
+.notification-cont{
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    border: 0.25px solid var(--gray-400);
+}
+.notif-title{
+    height: calc(10% - 20px);
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-family: "InterSemiBold";
+    font-size: 14px;
+}
+.notification-cont-cont{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+.notif-bar{
+    display: flex;
+    font-family: "InterRegular";
+    font-size: 12px;
+    padding: 10px;
+}
+.notif-username {
+    font-family: "InterSemiBold";
+}

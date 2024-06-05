@@ -1,6 +1,7 @@
 <?php
 include('../php/db_conn.php');
 include('../php/session_student.php');
+include('../php/comments.php');
 
 
 if (isset($_POST["committee-proceed-button"])) {
@@ -9,6 +10,9 @@ if (isset($_POST["committee-proceed-button"])) {
 }
 if (!isset($_SESSION['view-research-title-id'])) {
     header("location: ../html/student_MOR_7.php");
+}
+if (isset($_POST['rejected-dir-button'])) {
+    header("location: ../html/student_MOR_6.php");
 }
 $id = $_SESSION['student-id'];
 
@@ -70,7 +74,7 @@ if ($result6->num_rows > 0) {
     <!-- content -->
     <div class="content" id="page11">
         <div class="title-header-content" id="title-header-content-page11">
-            <button onclick="history.back()" class="return-button"><img src="../img/icon-back.png" id="return-button" /></button>
+            <button onclick="window.location.href='student_MOR_7.php';" class="return-button"><img src="../img/icon-back.png" id="return-button" /></button>
             <p id="title-header-proposal">Proposal Research Title: </p>
             <p id="title-header-info">
                 <?php
@@ -93,34 +97,53 @@ if ($result6->num_rows > 0) {
                 <p class="info-sub-title" id="com-rec-p">Comment/Recommendation</p>
                 <!-- data from db should be displayed here. -->
                 <div class="comment-sect">
-                    <div class="comments-cont" id="comment-1">
-                        <img src="../img/avatar-placeholder _- Change image here.png" />
-                        <?php
-                        echo "<p class='profile-name-comment'>Prof." . "</p>";
-                        echo "<p class='comment-date'>" . "</p>";
-                        echo "<p class='comment-cont-info'>" . "</p>";
-                        echo "<button onclick='' class='reply-button'>Reply here</button>";
-                        ?>
-                    </div>
+
+                    <?php
+
+                    $student_comment = "SELECT sc.id, sc.comments, sc.time_stamp, sc.thesis_id, sc.student_id, su.id, su.student_name 
+                                        FROM student_comments sc
+                                        INNER JOIN student_users as su ON sc.student_id = su.id
+                                        WHERE thesis_id = $uid and student_id = $id";
+                    $student_comment_res = $db_conn->query($student_comment);
+
+                    if ($student_comment_res->num_rows > 0) {
+                        while ($row1 = $student_comment_res->fetch_assoc()) {
+                            $student_name = $row1['student_name'];
+                            $comment = $row1['comments'];
+                            $time = $row1['time_stamp'];
+                            $time1 = strtotime($time);
+                            $formattedtime = date('D , d F Y', $time1);
+
+                            echo '<div class="comments-cont" id="comment-1"><img src="../img/avatar-placeholder _- Change image here.png" />';
+                            echo "<p class='profile-name-comment'>" . $student_name . "</p>";
+                            echo "<p class='comment-date'>" . $formattedtime . "</p>";
+                            echo "<p class='comment-cont-info'>" . $comment . "</p>";
+                            echo "<button onclick='' class='reply-button'>Reply here</button></div>";
+                        }
+                    }
+                    echo $uid;
+                    ?>
+
                 </div>
                 <form action="" method="POST">
                     <div class="comment-textarea-sect">
                         <div class="comments-cont" id="comment-textarea">
                             <img src="../img/avatar-placeholder _- Change image here.png" />
-                            <textarea placeholder="Autosize height based on content lines" class="comment-textarea"></textarea>
-                            <button onclick="" class="fulvuos-button" id="add-button">Add</button>
+                            <textarea placeholder="Write your thoughts.." name="student-comment-textarea" class="comment-textarea"></textarea>
+                            <button onclick="" class="fulvuos-button" id="add-button" name="comment-button">Add</button>
                         </div>
-
-                        <?php
-                        if ($status == "Approved" or $status == "Conditional") {
-                            echo "<div class='buttons-view-proceed'> <button class='fulvuos-button' id='committee-proceed-button' name='committee-proceed-button'>Proceed to Step 2</button> </div>";
-                        } elseif ($status == "Processing") {
-                            echo "<div class='buttons-view-proceed'><p class='response-ind' style='color:#DC8116;'> Please wait for the Research Adviser's response..</div>";
-                        } else {
-                            echo "<div class='buttons-view-proceed'><p class='response-ind' style='color:#DC3545;'> Please upload another title proposal. </p></div> ";
-                        }
-                        ?>
                     </div>
+
+                    <?php
+                    if ($status == "Approved" or $status == "Conditional") {
+                        echo "<div class='buttons-view-proceed'> <button class='fulvuos-button' id='committee-proceed-button' name='committee-proceed-button'>Proceed to Step 2</button> </div>";
+                    } elseif ($status == "Processing") {
+                        echo "<div class='buttons-view-proceed'><p class='response-ind' style='color:#DC8116;'> Please wait for the Research Adviser's response..</div>";
+                    } else {
+                        echo "<div class='buttons-view-proceed'><p class='response-ind' style='color:#DC3545;'> Please upload another title proposal. </p><button class='fulvuos-button' name = 'rejected-dir-button'>Upload Another Paper</button></div> ";
+                    }
+                    ?>
+
                 </form>
             </div>
             <div class="preview-cont">
@@ -136,15 +159,15 @@ if ($result6->num_rows > 0) {
             </div>
         </div>
         <?php
-        echo "<div class='zoom-button' id='zoom-button' name='zoom-button' onclick='PopUp()'></div>";
+        echo "<div class='zoom-button' id='zoom-button' name='zoom-button' title='Enlarge Research Paper' onclick='PopUp()'></div>";
         echo "<div class='zoom-dir' id='zoom-dir' name='zoom-dir'>
-            <div class='zoom-dir-exit' id='zoom-dir-exit' name='zoom-dir-exit' onclick='PopUpExit()'></div>
-            <embed src='$pdfPath#toolbar=0' id='embed-pdf'></embed>
-            </div>";
+                        <div class='zoom-dir-exit' id='zoom-dir-exit' name='zoom-dir-exit' onclick='PopUpExit()'></div>
+                        <embed src='$pdfPath#toolbar=0' id='embed-pdf'></embed>
+                        </div>";
 
         ?>
     </div>
-
+    </div>
 </body>
 
 </html>

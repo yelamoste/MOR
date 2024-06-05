@@ -1,11 +1,32 @@
+<?php
+include('../php/db_conn.php');
+
+include('../php/session_student.php');
+include('../php/title_proposal_display1.php');
+include('../php/title_proposal_display2.php');
+
+
+if (!isset($_SESSION['committeesel'])) {
+    header("location: ../html/student_MOR_9.php");
+}
+if (isset($_POST["view-research-title2"])) {
+    $_SESSION['view-research-title-id2'] = $_POST["view-research-title2"];
+    header("location: ../html/student_MOR_11.php ");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title> Student MOR </title>
+    <title> Student DP1 </title>
     <!-- temporary title for now, supposed changes as per title proposals -->
     <link rel="stylesheet" href="../css/main_style.css">
     <link rel="icon" type="image/x-icon" href="../img/book-half.png">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script src="../javascript/navbar.js"></script>
 </head>
 
 <body>
@@ -15,8 +36,18 @@
         <p id="navbar-header">CpEng Research Library</p>
 
         <span><a href="#"> Homepage</a></span>
-        <div class="profile">
+        <div class="profile" onclick="profileDropDown()">
             <img src="../img/person-circle.png" id="navbar-profile" />
+            <div class="profile-dropdown-cont" id="profile-dropdown-cont">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="profile-name">
+                        <p>Welcome, <?php echo $_SESSION['student-name']; ?>
+                    </div>
+                    <div class="log-out">
+                        <p id="log-out"><a href="../php/logout.php">Log out</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="content" id="page11">
@@ -30,36 +61,36 @@
                 <!-- data from db should be displayed here. -->
 
                 <div class="comments-cont" id="comment-1">
-                    <img src="../img/avatar-placeholder _- Change image here.png"/>
+                    <img src="../img/avatar-placeholder _- Change image here.png" />
                     <p class="profile-name-comment">Prof. Juan Dela Cruz Dimagiba</p>
                     <p class="comment-date">1 day ago</p>
                     <p class="comment-cont-info">Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                     <button onclick="" class="reply-button">Reply here</button>
                 </div>
                 <div class="comments-cont" id="comment-2">
-                    <img src="../img/avatar-placeholder _- Change image here.png"/>
+                    <img src="../img/avatar-placeholder _- Change image here.png" />
                     <p class="profile-name-comment">Prof. Juan Dela Cruz Dimagiba</p>
                     <p class="comment-date">1 day ago</p>
                     <p class="comment-cont-info">Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                     <button onclick="" class="reply-button">Reply here</button>
                 </div>
                 <div class="comments-cont" id="comment-3">
-                    <img src="../img/avatar-placeholder _- Change image here.png"/>
+                    <img src="../img/avatar-placeholder _- Change image here.png" />
                     <p class="profile-name-comment">Prof. Juan Dela Cruz Dimagiba</p>
-                    <p class="comment-date">1 day ago</p> 
+                    <p class="comment-date">1 day ago</p>
                     <p class="comment-cont-info">Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                     <button onclick="" class="reply-button">Reply here</button>
                 </div>
                 <div class="comments-cont" id="comment-textarea">
-                    <img src="../img/avatar-placeholder _- Change image here.png"/>
+                    <img src="../img/avatar-placeholder _- Change image here.png" />
                     <textarea placeholder="Autosize height based on content lines" class="comment-textarea"></textarea>
                     <button onclick="" class="fulvuos-button" id="add-button">Add</button>
                 </div>
                 <div class="buttons-view-proceed">
                     <button onclick="" class="fulvuos-button" id="view-button">View the paper</button>
-                    <button onclick="" class="fulvuos-button "id="proceed-button">Proceed to Title Defense</button>
+                    <button onclick="" class="fulvuos-button " id="proceed-button">Proceed to Title Defense</button>
                 </div>
-                
+
             </div>
             <div class="approval-cont">
                 <p class="info-sub-title" id="approval-responses-title">Approval Responses (7/9)</p>
@@ -70,9 +101,9 @@
                         <div class="info-sub-title" id="research-response status">Status</div>
                     </div>
                     <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
-                    </div>    
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
+                    </div>
                 </div>
                 <!-- research committee response -->
                 <div class="research-committee-cont">
@@ -82,44 +113,44 @@
                     </div>
                     <!-- should be pulled from db, iterate to 12 committee -->
                     <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
-                    </div>    
-                    <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
                     </div>
                     <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
-                    </div>                    
-                    <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
-                    </div>                    
-                    <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-rejected">Rejected</p>                                   
-                    </div>                    
-                    <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
-                    </div>                    
-                    <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-rejected">Rejected</p>                                   
-                    </div>                    
-                    <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
                     </div>
                     <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-accepted">Accepted</p>                                   
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
                     </div>
                     <div class="faculty-section-response">
-                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>    
-                        <p class="display-result-title" id="title-rejected">Rejected</p>                                   
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
+                    </div>
+                    <div class="faculty-section-response">
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-rejected">Rejected</p>
+                    </div>
+                    <div class="faculty-section-response">
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
+                    </div>
+                    <div class="faculty-section-response">
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-rejected">Rejected</p>
+                    </div>
+                    <div class="faculty-section-response">
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
+                    </div>
+                    <div class="faculty-section-response">
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-accepted">Accepted</p>
+                    </div>
+                    <div class="faculty-section-response">
+                        <p class="faculty-name-section">Prof. Juan Dela Cruz Dimagiba</p>
+                        <p class="display-result-title" id="title-rejected">Rejected</p>
                     </div>
 
 
@@ -135,4 +166,5 @@
     </div>
 
 </body>
+
 </html>

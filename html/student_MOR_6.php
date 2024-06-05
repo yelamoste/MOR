@@ -2,7 +2,28 @@
 include("../php/db_conn.php");
 include("../php/form.php");
 
-include('../php/session_student.php');
+// include('../php/session_student.php');
+
+
+// For Research Adviser Selection
+
+$sql1 = "SELECT id, faculty_name FROM faculty_users";
+$result1 = $db_conn->query($sql1);
+
+
+// For Courses Selection
+$sql2 = "SELECT id, courses FROM courses";
+$result2 = $db_conn->query($sql2);
+
+
+// For Year and Section Selection
+$sql3 = "SELECT id, yearnsection FROM yearnsection";
+$result3 = $db_conn->query($sql3);
+
+
+// For Year and Section Selection
+$sql7 = "SELECT id, group_number FROM group_numbers";
+$result7 = $db_conn->query($sql7);
 
 
 ?>

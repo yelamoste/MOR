@@ -1,15 +1,18 @@
 <?php
     require("../php/log.php");
-    session_start();
+    require("../php/log_faculty.php");
 
 
 
+    // if (isset($_SESSION['student-id'])){ // check if student is logged in
 
-    if (isset($_SESSION['student-id'])){ // check if student is logged in
+    //     header("location: ../html/student_MOR_4.php"); // redirect 
+    // }
+    if (isset($_SESSION['faculty-id'])){ // check if faculty is logged in
 
-        header("location: ../html/student_MOR_4.php"); // redirect 
+        header("location: ../html/faculty_MOR_4.php"); // redirect 
     }
-
+   
 ?>
 
 
@@ -46,7 +49,7 @@
                 <div class="option-buttons">
                     <button onclick="StudentResearcher()">Student Researcher</button>
                     <button onclick="Faculty()">Faculty</button>
-                    <button onclick="Admin()">Admin</button>
+                    <!-- <button onclick="Admin()">Admin</button> -->
                 </div>
             </div>
 
@@ -123,6 +126,7 @@
                         <span>commodo quis imperdiet massa tincidunt nunc pulvinar sapien et</span>
                     </div>
                     <div class="login-form">
+                        <input class="input-form" type="text" id="signup_faculty_id" name="signup_faculty_id" placeholder="Faculty ID number" required/>
                         <input class="input-form" type="email" id="signup_faculty_webmail" name="signup_faculty_webmail" placeholder="PUP webmail" required/>
                         <input class="input-form" type="password" id="signup_faculty_pass" name="signup_faculty_pass" placeholder="Password" required/>
                         <button type="submit" class="submit-button" name="faculty_signup">Submit</button>
@@ -131,10 +135,13 @@
                 </form>
             </div>
             
+
+<!-- REASON FOR REMOVING THIS IS FOR SECURITY PURPOSES. ADMIN SHOULD BE SEPARATED FROM USERS. -->
+
             <!-- SIGN IN -->
             <!-- Admin -->
             
-            <div class="sign-cont" id="signin-admin-cont">
+            <!-- <div class="sign-cont" id="signin-admin-cont">
                 <form action="" method="post">
                     <div class="title-block">
                         <img src="../img/cmpe_logo.jpg">
@@ -150,10 +157,8 @@
                 </form>
             </div>
             
-            <!-- SIGN UP -->
-            <!-- Admin -->
-                
-            
+             SIGN UP Admin                 
+
             <div class="sign-cont" id="signup-admin-cont">
                 <form action="" method="post">
                     <div class="title-block">
@@ -169,7 +174,7 @@
                     </div>
                 </form>
             </div>
-            
+             --> 
 
         </div>
 
